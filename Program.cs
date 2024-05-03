@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -25,33 +25,49 @@ namespace CMP1903_A1_2324
                 Console.Write("Enter your choice (1-5): ");
                 string choice = Console.ReadLine();
 
-                switch (choice)
+                if (choice == "1")
                 {
-                    case "1":
-                        PlayDiceGame();
-                        break;
-                    case "2":
-                        InstantiateSevensOutGame();
-                        break;
-                    case "3":
-                        InstantiateThreeOrMoreGame();
-                        break;
-                    case "4":
-                        ViewStatisticsData();
-                        break;
-                    case "5":
-                        PerformTests();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
-                        break;
+                    PlayDiceGame();
+                }
+                else if (choice == "2")
+                {
+                    InstantiateSevensOutGame();
+                }
+                else if (choice == "3")
+                {
+                    InstantiateThreeOrMoreGame();
+                }
+                else if (choice == "4")
+                {
+                    ViewStatisticsData();
+                }
+                else if (choice == "5")
+                {
+                    PerformTests();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
                 }
 
-                Console.WriteLine("Do you want to continue? (y/n)");
-                string continueChoice = Console.ReadLine();
-                if (continueChoice.ToLower() != "y")
+                bool validInput = false;
+                while (!validInput)
                 {
-                    exit = true;
+                    Console.WriteLine("Do you want to continue? (y/n)");
+                    string continueChoice = Console.ReadLine().ToLower();
+                    if (continueChoice == "y")
+                    {
+                        validInput = true;
+                    }
+                    else if (continueChoice == "n")
+                    {
+                        validInput = true;
+                        exit = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
+                    }
                 }
             }
         }
